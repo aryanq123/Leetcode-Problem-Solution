@@ -1,0 +1,23 @@
+class Solution:
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        Rows,Cols=len(matrix),len(matrix[0])
+        rowzero=False
+        for r in range(Rows):
+            for c in range(Cols):
+                if matrix[r][c]==0:
+                    matrix[0][c]=0
+                    if r>0:
+                        matrix[r][0]=0
+                    else:
+                        rowzero=True
+        for r in range(1,Rows):
+            for c in range(1,Cols):
+                if matrix[0][c] == 0 or matrix[r][0]==0:
+                    matrix[r][c]=0
+        if matrix[0][0]==0:
+            for r in range(Rows):
+                matrix[r][0]=0
+        if rowzero:
+            for c in range(Cols):
+
+                matrix[0][c]=0 
